@@ -99,6 +99,10 @@ local function ToggleCamlock()
                 TargetHumanoid = TargetCharacter:FindFirstChild("Humanoid")
                 TargetRootPart = TargetCharacter:FindFirstChild(CamlockSettings.AimPart)
 
+                if not CamlockSettings.Enabled then
+                    TargetPlayer = nil
+                end
+
                 Connections["Camera Lock"] = RunService.Heartbeat:Connect(function()
                     if TargetRootPart then
                         local Prediction = TargetRootPart.Velocity * CamlockSettings.Prediction
